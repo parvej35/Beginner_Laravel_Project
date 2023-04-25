@@ -18,19 +18,22 @@ class ShortenedUrlsTableSeeder extends Seeder
     public function run()
     {
         #if you want to truncate the table; Open the below line
-//        DB::table('shortened_urls')->delete();
+        DB::table('shortened_urls')->delete();
 
         ShortenedUrls::create([
             'original_url' => 'https://laravel.com/docs/10.x/installation#getting-started-on-macos',
-            'short_url' => self::make_tiny_url('https://laravel.com/docs/10.x/installation#getting-started-on-macos')
+            'short_url' => self::make_tiny_url('https://laravel.com/docs/10.x/installation#getting-started-on-macos'),
+            'users_id' => 1
         ]);
         ShortenedUrls::create([
             'original_url' => 'https://www.global-tickets.com/de/Sportveranstaltungen/Motorsport/MotoGP/MotoGP-Portimao/MotoGP-Wochenend-Tickets-3-Tage-Portimao.html',
-            'short_url' => self::make_tiny_url('https://www.global-tickets.com/de/Sportveranstaltungen/Motorsport/MotoGP/MotoGP-Portimao/MotoGP-Wochenend-Tickets-3-Tage-Portimao.html')
+            'short_url' => self::make_tiny_url('https://www.global-tickets.com/de/Sportveranstaltungen/Motorsport/MotoGP/MotoGP-Portimao/MotoGP-Wochenend-Tickets-3-Tage-Portimao.html'),
+            'users_id' => 1
         ]);
         ShortenedUrls::create([
             'original_url' => 'https://www.hanze.nl/eng/education/engineering/institute-for-life-science--technology/programmes/master/data-science-for-life-sciences',
-            'short_url' => self::make_tiny_url('https://www.hanze.nl/eng/education/engineering/institute-for-life-science--technology/programmes/master/data-science-for-life-sciences')
+            'short_url' => self::make_tiny_url('https://www.hanze.nl/eng/education/engineering/institute-for-life-science--technology/programmes/master/data-science-for-life-sciences'),
+            'users_id' => 1
         ]);
     }
 

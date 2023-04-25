@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+{{--@include('layouts.app')--}}
 <style>
 
     .circle-tile {
@@ -61,62 +61,22 @@
     .circle-tile-heading.purple:hover {
         background-color: #7F3D9B;
     }
-    .tile-img {
-        text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.9);
-    }
 
     .dark-blue {
         background-color: #34495E;
     }
+    .orange {
+        background-color: #DA8C10;
+    }
     .green {
         background-color: #16A085;
-    }
-    .blue {
-        background-color: #2980B9;
-    }
-    .orange {
-        background-color: #F39C12;
     }
     .red {
         background-color: #E74C3C;
     }
-    .purple {
-        background-color: #8E44AD;
-    }
-    .dark-gray {
-        background-color: #7F8C8D;
-    }
-    .gray {
-        background-color: #95A5A6;
-    }
-    .light-gray {
-        background-color: #BDC3C7;
-    }
-    .yellow {
-        background-color: #F1C40F;
-    }
-    .text-dark-blue {
-        color: #34495E;
-    }
-    .text-green {
-        color: #16A085;
-    }
-    .text-blue {
-        color: #2980B9;
-    }
-    .text-orange {
-        color: #F39C12;
-    }
-    .text-red {
-        color: #E74C3C;
-    }
-    .text-purple {
-        color: #8E44AD;
-    }
     .text-faded {
         color: rgba(255, 255, 255, 0.7);
     }
-
 
 </style>
 
@@ -127,25 +87,16 @@
                 <div class="pull-left">
                     <h2>Laravel Assessment</h2>
                 </div>
-                <div class="pull-right mb-2">
+                {{--<div class="pull-right mb-2">
                     <a class="fa fa-plus btn btn-success" href="{{ route('shortenedurl.create') }}"> Add URL</a>
-                    <a class="fa fa-link btn btn-success" href="{{ route('url-list') }}"> URL List</a>
+                    <a class="fa fa-link btn btn-secondary" href="{{ route('url-list') }}"> URL List</a>
                     <a class="fa fa-user btn btn-primary" href="{{ route('user-list') }}"> User List</a>
-                    <a class="fa fa-sign-out btn btn-warning" href="{{ route('logout') }}"> Logout</a>
-                </div>
+                    <a class="fa fa-sign-out btn btn-danger" href="{{ route('logout') }}"> Logout</a>
+                </div>--}}
+                @include('layouts.menu')
             </div>
         </div>
         <hr>
-
-        @php
-            use App\Models\ShortenedUrls;
-            use App\Models\Users;
-
-            $total_users = Users::all()->count();
-            $total_urls = ShortenedUrls::all()->count();
-
-        @endphp
-
         <div class="row justify-content-center" >
             <div class="col-lg-2 col-sm-6">
                 <div class="circle-tile ">
@@ -159,9 +110,9 @@
             </div>
 
             <div class="col-lg-2 col-sm-6">
-                <div class="circle-tile ">
+                <div class="circle-tile">
                     <a href="#"><div class="circle-tile-heading red"><i class="fa fa-link fa-fw fa-3x"></i></div></a>
-                    <div class="circle-tile-content red">
+                    <div class="circle-tile-content orange">
                         <div class="circle-tile-description text-faded"> URL </div>
                         <div class="circle-tile-number text-faded ">{{ $total_urls }}</div>
                         <a class="circle-tile-footer" href="{{ route('url-list') }}">URL List <i class="fa fa-chevron-circle-right"></i></a>

@@ -13,6 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
+        self::down();
+
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');

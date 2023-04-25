@@ -44,9 +44,16 @@ class UsersController extends Controller
 //        print($request['email']);
 //        print($request['password']);
 
+//        $appUsers = Users::where('email', $request['email']);
+//        $appUsers = Users::where('email', '=', "'".$request['email']."'")->first();
         $appUsers = Users::where('email', $request['email'])->first();
-        if (!$appUsers) {
-            return redirect("login")->withErrors(['error' => 'You have registered yet. Please complete the registration.']);
+//        print_r($appUsers);
+
+//        if (Users::where('email', '=', $request['email'])->count() > 0
+//        if (Users::where('email', '=', $request['email'])->exists())
+
+        if ($appUsers == null) {
+            return redirect("login")->withErrors(['error' => 'You are not registered yet. Please complete the registration.']);
         }
         $attributes = $appUsers->toArray($request);
         $decrypted_pass = Crypt::decryptString($attributes['password']);
@@ -54,8 +61,8 @@ class UsersController extends Controller
         if ($request['password'] == $decrypted_pass) {
 
             session()->start();
-            session()->put('user_id', $attributes['id']);
-            session()->put('user_name', $attributes['name']);
+            session()->put('users_id', $attributes['id']);
+            session()->put('users_name', $attributes['name']);
 
             return redirect('/');
 //            return view('welcome');

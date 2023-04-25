@@ -17,7 +17,7 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         #if you want to truncate the table; Open the below line
-//        DB::table('users')->delete();
+        DB::table('users')->delete();
 
         Users::create([
             'name' => 'Parvej Chowdhury',

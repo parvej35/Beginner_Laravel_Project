@@ -92,7 +92,7 @@
                             <div class="form-group py-2">
                                 <div class="input-field">
                                     <span class="far fa-user p-2"></span>
-                                    <input type="text" id="email_address" name="email" placeholder="Email" required>
+                                    <input type="text" id="email_address" name="email" placeholder="Email" value="user1@mail.com" required>
                                 </div>
                                 @if ($errors->has('email'))
                                     <span class="text-danger">{{ $errors->first('email') }}</span>
@@ -101,7 +101,7 @@
                             <div class="form-group py-1 pb-2">
                                 <div class="input-field">
                                     <span class="fas fa-lock px-2"></span>
-                                    <input type="password" id="password" name="password" placeholder="Enter your Password" required>
+                                    <input type="password" id="password" name="password" placeholder="Enter your Password" value="123456" required>
                                 </div>
                                 @if ($errors->has('password'))
                                     <span class="text-danger">{{ $errors->first('password') }}</span>

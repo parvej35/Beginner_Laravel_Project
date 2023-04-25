@@ -2,18 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Users;
 use App\Models\ShortenedUrls;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
 class ShortenedUrlsController extends Controller
 {
+    private $USERS_ID = '';
+
     public function __construct()
     {
         $this->middleware(function ($request, $next) {
-            if (!$request->session()->has('user_id')) {
+            if (!$request->session()->has('users_id')) {
                 return redirect('/login');
             }
+            $this->USERS_ID = $request->session()->get('users_id');
             return $next($request);
         });
     }
@@ -23,9 +27,25 @@ class ShortenedUrlsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function home()
+    {
+
+        $total_users = Users::all()->count();
+
+//        $total_urls = ShortenedUrls::all()->count();
+        $total_urls = ShortenedUrls::where('users_id', $this->USERS_ID)->count();
+
+        return view('welcome', ['total_users' => $total_users, 'total_urls' => $total_urls]);
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-        $shortenedUrl = ShortenedUrls::orderBy('id','desc')->paginate(10);
+        $shortenedUrl = ShortenedUrls::where('users_id', $this->USERS_ID)->orderBy('id','desc')->paginate(10);
         return view('shortenedurl.index', compact('shortenedUrl'));
     }
 
@@ -51,6 +71,7 @@ class ShortenedUrlsController extends Controller
             'original_url' => 'required',
         ]);
         $request["short_url"] = self::make_tiny_url($request["original_url"]);
+        $request["users_id"] = $request->session()->get('users_id');
 
         ShortenedUrls::create($request->post());
 

@@ -13,10 +13,17 @@ return new class extends Migration
      */
     public function up()
     {
+        self::down();
+
         Schema::create('shortened_urls', function (Blueprint $table) {
             $table->increments('id');
             $table->string('original_url');
             $table->string('short_url');
+
+            $table->unsignedInteger('users_id');
+//            $table->foreign('users_id')->references('id')
+//                ->on('users')->onDelete('cascade');
+
             $table->timestamps();
         });
     }

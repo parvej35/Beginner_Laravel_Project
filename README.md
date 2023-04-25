@@ -89,8 +89,17 @@
     3) Open terminal and run the following command to create tables in the database:
         php artisan migrate
 
+        or
+       
+       Migrate a single file:
+        php artisan migrate  --path=/database/migrations/selected
+
     4) Run the below commmand to execute the seeder files:
         php artisan db:seed
+
+### Generate Application Key (APP_KEY) in .env file:
+    php artisan key:generate
+    php artisan config:cache
 
 ### Clear cache files:
     php artisan cache:clear

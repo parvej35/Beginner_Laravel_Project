@@ -12,7 +12,7 @@
                     <a class="fa fa-plus btn btn-success" href="{{ route('shortenedurl.create') }}"> Add URL</a>
                     <a class="fa fa-link btn btn-success" href="{{ route('url-list') }}"> URL List</a>
                     <a class="fa fa-user btn btn-primary" href="{{ route('user-list') }}"> User List</a>
-                    <a class="fa fa-sign-out btn btn-warning" href="{{ route('logout') }}"> Logout</a>
+                    <a class="fa fa-sign-out btn btn-danger" href="{{ route('logout') }}"> Logout</a>
                 </div>
             </div>
         </div>
