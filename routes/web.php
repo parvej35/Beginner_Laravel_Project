@@ -16,18 +16,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {return view('welcome');});
-Route::get('home', function () {return view('welcome');});
-Route::get('dashboard', function () {return view('welcome');});
+Route::get('/', function () {return view('welcome');})->middleware('auth');
+Route::get('home', function () {return view('welcome');})->middleware('auth');
+Route::get('dashboard', function () {return view('welcome');})->middleware('auth');
 
 //Route::get('/', [ShortenedUrlsController::class, 'index']);
 //Route::get('home', [ShortenedUrlsController::class, 'index']);
 //Route::get('dashboard', [ShortenedUrlsController::class, 'index']);
 
-Route::resource('shortenedurl', ShortenedUrlsController::class);
+Route::resource('shortenedurl', ShortenedUrlsController::class)->middleware('auth');
 
-Route::get('url-list', [ShortenedUrlsController::class, 'index'])->name('url-list');
-Route::get('user-list', [UsersController::class, 'list'])->name('user-list');
+Route::get('url-list', [ShortenedUrlsController::class, 'index'])->name('url-list')->middleware('auth');
+Route::get('user-list', [UsersController::class, 'list'])->name('user-list')->middleware('auth');
 
 Route::get('login', [UsersController::class, 'index'])->name('login');
 Route::post('post-login', [UsersController::class, 'postLogin'])->name('login.post');
