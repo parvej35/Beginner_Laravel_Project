@@ -112,3 +112,9 @@
 
 ### API List
 List of APIs are location in 'routes/api.php' file.
+
+
+### Todo
+    => API
+    => PDF
+    => Email
