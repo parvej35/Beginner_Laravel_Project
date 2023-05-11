@@ -112,6 +112,7 @@
 
 ### API List
     # List of APIs are location in 'routes/api.php' file.
+    (Check directory API_IMAGES for references)
     
     # Users:
     * Get all user list : http://127.0.0.1:8000/api/user_list
