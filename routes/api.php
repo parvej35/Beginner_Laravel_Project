@@ -15,15 +15,16 @@ use App\Http\Controllers\ApiController;
 |
 */
 
-Route::get('users', [ApiController::class, 'all_user']);
-Route::get('users/{id}', [ApiController::class, 'show_user']);
-Route::post('users', [ApiController::class, 'store_user']);
-Route::put('users/{id}', [ApiController::class, 'update_user']);
-Route::delete('users/{id}', [ApiController::class, 'delete_user']);
+//User
+Route::get('user_list', [ApiController::class, 'user_list']);
+Route::get('get_user/{id}', [ApiController::class, 'get_user']);
+Route::post('save_user', [ApiController::class, 'save_user']);
+Route::put('update_user', [ApiController::class, 'update_user']);
+Route::delete('delete_user/{id}', [ApiController::class, 'delete_user']);
 
-Route::get('short-url', [ApiController::class, 'all_short_url']);
-Route::get('short-url/{id}', [ApiController::class, 'show_short_url']);
-Route::post('short-url', [ApiController::class, 'store_short_url']);
-Route::put('short-url/{id}', [ApiController::class, 'update_short_url']);
-Route::delete('short-url/{id}', [ApiController::class, 'delete_short_url']);
-
+//URLs
+Route::get('url_list', [ApiController::class, 'url_list']);
+Route::get('get_url/{id}', [ApiController::class, 'get_url']);
+Route::post('save_url', [ApiController::class, 'save_url']);
+Route::put('update_url', [ApiController::class, 'update_url']);
+Route::delete('delete_url/{id}', [ApiController::class, 'delete_url']);

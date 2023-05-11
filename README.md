@@ -111,10 +111,22 @@
     php artisan serve --port=9090
 
 ### API List
-List of APIs are location in 'routes/api.php' file.
+    # List of APIs are location in 'routes/api.php' file.
+    
+    # Users:
+    * Get all user list : http://127.0.0.1:8000/api/user_list
+    * Get user by ID    : http://127.0.0.1:8000/api/get_user/{id}
+    * Save new user     : http://127.0.0.1:8000/api/save_user
+    * Update user info  : http://127.0.0.1:8000/api/update_user
+    * Delete user by ID : http://127.0.0.1:8000/api/delete_user/{id}
 
+    # URLs:
+    * Get all url list : http://127.0.0.1:8000/api/url_list
+    * Get url by ID    : http://127.0.0.1:8000/api/get_url/{id}
+    * Save new url     : http://127.0.0.1:8000/api/save_url
+    * Update url info  : http://127.0.0.1:8000/api/update_url
+    * Delete url by ID : http://127.0.0.1:8000/api/delete_url/{id}
 
 ### Todo
-    => API
     => PDF
     => Email
