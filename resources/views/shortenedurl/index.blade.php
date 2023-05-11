@@ -6,6 +6,7 @@
             <div class="col-lg-12 margin-tb">
                 <div class="pull-left">
                     <h2>URL List</h2>
+                    <a class="fa fa-download btn btn-info" href="export_url_list"> Export List</a>
                 </div>
                 @include('layouts.menu')
             </div>

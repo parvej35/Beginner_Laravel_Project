@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Users;
 use App\Models\ShortenedUrls;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
@@ -34,7 +35,6 @@ class ShortenedUrlsController extends Controller
 
 //        $total_urls = ShortenedUrls::all()->count();
         $total_urls = ShortenedUrls::where('users_id', $this->USERS_ID)->count();
-
         return view('welcome', ['total_users' => $total_users, 'total_urls' => $total_urls]);
     }
 
@@ -134,6 +134,18 @@ class ShortenedUrlsController extends Controller
         ShortenedUrls::where('id', $id)->firstorfail()->delete();
 
         return redirect()->route('shortenedurl.index')->with('success','URL has been deleted successfully');
+    }
+
+    public function export_url_list(Request $request)
+    {
+        $shortenedUrlList = ShortenedUrls::where('users_id', $this->USERS_ID)->orderBy('id','desc')->get();
+        $data = [
+            'shortenedUrlList' => $shortenedUrlList,
+        ];
+
+        $pdf = PDF::loadView('export_url_list', $data);
+
+        return $pdf->download('export_url_list.pdf');
     }
 
     private function make_tiny_url($original_url) {
